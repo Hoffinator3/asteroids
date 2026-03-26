@@ -1,5 +1,5 @@
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_TURN_SPEED
 import circleshape
 from player import Player
 from logger import log_state
@@ -16,7 +16,7 @@ def main():
 
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
-    
+    player = Player(x,y)
 
     while True:
         log_state()
@@ -24,9 +24,10 @@ def main():
             if event.type == pygame.QUIT:
                 return
 
-        player = Player(x,y)
+        
 
         screen.fill("black")
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
 
