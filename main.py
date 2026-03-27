@@ -47,6 +47,12 @@ def main():
             drawn.draw(screen)
 
         for rock in asteroids:
+            for s in shots:
+                if rock.collides_with(s):
+                    log_event("asteroid_shot")
+                    rock.split()
+                    s.kill()
+
             if rock.collides_with(player) == True:
                 log_event("player_hit")
                 print("Game Over!")
